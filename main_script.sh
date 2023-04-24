@@ -17,3 +17,7 @@ echo "Hi, I'm sleeping for 5 seconds..."
 sleep 5
 
 python sort_json.py
+sleep 1
+
+python format.py
+
