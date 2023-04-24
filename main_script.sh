@@ -4,20 +4,23 @@
 rm -f input_1.json
 rm -f input_2.json
 
-python request_jobs.py 0 input_1.json django tampere
+python request_jobs.py 0 input_1.json embedded suomi
 sleep 2
-python request_jobs.py 0 input_2.json "python developer" tampere
+python request_jobs.py 0 input_2.json "python developer" suomi
 
-echo "Hi, I'm sleeping for 5 seconds..." 
+echo "Hi, I'm appending files for 5 seconds..." 
 sleep 5
 
 python append_json_files.py
 
-echo "Hi, I'm sleeping for 5 seconds..." 
+echo "Hi, I'm sorting files for 5 seconds..." 
 sleep 5
 
 python sort_json.py
 sleep 1
 
+echo "Hi, I'm formating json to docx for 5 seconds..." 
 python format.py
 
+echo "Hi, I'm sending email..." 
+python send_email_to_csv_contacts_once_a_day.py

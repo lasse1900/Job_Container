@@ -12,16 +12,16 @@ with open('sorted.json', 'r') as file:
 with open("sorted.json", 'r') as fp:
     for count, line in enumerate(fp):
         pass
-print('Total Lines', count + 1)
+# print('Total Lines', count + 1)
 
-number_of_jobs = (count - 2)/16
+number_of_jobs = (count - 2)/17
 print(f'Number of jobs: {int(number_of_jobs)}')
 top = int(number_of_jobs)-1
 
 with open("formated.md", "w") as wf:
     for i in range(top):
         content = json.loads(data)[i]
-        print(content)
+        # print(content)
 
         def format(key, value):
             return f"<{value}>" if key.endswith("_url") else value
@@ -30,6 +30,6 @@ with open("formated.md", "w") as wf:
             wf.write(f"- {key} : {format(key, value)}")
 
 input_file = "formated.md"
-output_file = "output2.docx"
+output_file = "jobs.docx"
 
 output = pypandoc.convert_file(input_file, "docx", outputfile=output_file)

@@ -8,6 +8,9 @@
 
 ### Basic Info
 
-- **Note** that you need RadipAPI-key to get valid response to requests, 
-            you can see find the _env -file at the root directory
+- **Note** 
+- App needs RadipAPI-key to get valid response to requests, you can see find the _env -file at the root directory
+- App will also need YAGMAIL_PASS password for sending emails
+- contacts.csv file is used to read needed emails to send attachments
+
 
