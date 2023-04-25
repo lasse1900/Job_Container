@@ -18,16 +18,28 @@ number_of_jobs = (count - 2)/17
 print(f'Number of jobs: {int(number_of_jobs)}')
 top = int(number_of_jobs)-1
 
+desired_keys = ["company_name", "job_location", "date", "job_url"]
+
 with open("formated.md", "w") as wf:
+    wf.write("OPEN JOBS on <fi.indeed.com>")
+    wf.write("\n")
+    wf.write("-"*25)
+    wf.write("\n")
+    def format(key, value):
+        return f"<{value}>" if key.endswith("_url") else value
+    
     for i in range(top):
         content = json.loads(data)[i]
-        # print(content)
 
-        def format(key, value):
-            return f"<{value}>" if key.endswith("_url") else value
-
+        # Printed only desired fields added with CR
         for key, value in content.items():
-            wf.write(f"- {key} : {format(key, value)}")
+            if key in desired_keys:
+                wf.write(f"{key} : {format(key, value)}\n")
+                wf.write("\n")
+        # Add separator after each object
+        wf.write("-"*25)
+        wf.write("\n")
+        wf.write("\n")
 
 input_file = "formated.md"
 output_file = "jobs.docx"
