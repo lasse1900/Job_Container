@@ -2,14 +2,13 @@ import json
 import pypandoc
 
 # Formating JSON as MD to docx
-# Skandic alphabeths fail
-# pandoc formated.md -f markdown -t docx -o example.docx (command line)
+# pandoc formated.md -f markdown -t docx -o example.docx (on command line)
 
 with open('sorted.json', 'r') as file:
     data = file.read()
 
 # sparate call to read line count
-with open("sorted.json", 'r') as fp:
+with open("sorted.json", 'r', encoding="utf-8") as fp:
     for count, line in enumerate(fp):
         pass
 # print('Total Lines', count + 1)
@@ -18,7 +17,7 @@ number_of_jobs = (count - 2)/17
 print(f'Number of jobs: {int(number_of_jobs)}')
 top = int(number_of_jobs)-1
 
-desired_keys = ["company_name", "job_location", "date", "job_url"]
+desired_keys = ["company_name", "date", "job_location", "job_title", "job_url"]
 
 with open("formated.md", "w") as wf:
     wf.write("OPEN JOBS on <fi.indeed.com>")

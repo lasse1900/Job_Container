@@ -3,6 +3,10 @@
 # remove previous requests response JSON files 
 rm -f input_1.json
 rm -f input_2.json
+rm -f formated.md
+rm -f output.json
+rm -f sorted.json
+rm -f jobs.docx
 
 python request_jobs.py 0 input_1.json embedded suomi
 sleep 2
