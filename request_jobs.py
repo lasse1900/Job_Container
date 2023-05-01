@@ -44,16 +44,17 @@ def start(offset, filename,keyword, location):
 
 def main(argv):
     offset = sys.argv[1]
-    # print(f'offset: {offset}')
-    # print("Type of offset : ", type(offset))
     filename = sys.argv[2]
     print(f'filename: {filename}')
     keyword = sys.argv[3]
     print(f'keyword: {keyword}')
-    location = sys.argv[4]
-    print(f'location: {location}')
-
-    start(offset.__str__(), filename, keyword, location)
+    print(f'{len(sys.argv)} argumets were given')
+    
+    if len(sys.argv) > 4:
+       location = sys.argv[4]
+       start(offset.__str__(), filename, keyword, location)
+    else:
+       start(offset.__str__(), filename, keyword, location='suomi')
 
 if __name__ == '__main__':
     main(sys.argv[1:].__str__())
