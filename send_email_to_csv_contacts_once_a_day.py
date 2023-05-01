@@ -15,8 +15,8 @@ df = pandas.read_csv('contacts.csv')
 
 for index, row in df.iterrows():
     contents = [f"""
-        Here {row['name']} is the content of the email! 
-        Hi!""",row['filepath'],
+        Hi {row['name']}, here's attached the daily fi.indeed.com open jobs listing! 
+        """,row['filepath'],
     ]
     # print(row['email'])
     yag.send(to=row['email'], subject=subject, contents=contents)
