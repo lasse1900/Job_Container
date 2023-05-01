@@ -43,15 +43,15 @@ def start(offset, filename,keyword, location):
 
 
 def main(argv):
-    offset = sys.argv[1]
-    filename = sys.argv[2]
+    offset = "0" # RapidAPI specific to read 10 jobs on one searchpage
+    filename = sys.argv[1]
     print(f'filename: {filename}')
-    keyword = sys.argv[3]
+    keyword = sys.argv[2]
     print(f'keyword: {keyword}')
     print(f'{len(sys.argv)} argumets were given')
     
-    if len(sys.argv) > 4:
-       location = sys.argv[4]
+    if len(sys.argv) > 3:
+       location = sys.argv[3]
        start(offset.__str__(), filename, keyword, location)
     else:
        start(offset.__str__(), filename, keyword, location='suomi')

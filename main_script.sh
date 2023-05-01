@@ -8,9 +8,12 @@ rm -f output.json
 rm -f sorted.json
 rm -f jobs.docx
 
-python request_jobs.py 0 input_1.json embedded
+sleep 5
+#      argv 1          argv 2       argv 3
+python request_jobs.py input_1.json embedded
 sleep 2
-python request_jobs.py 0 input_2.json "python developer"
+#      argv 1          argv 2       argv 3             argv 4
+python request_jobs.py input_2.json "python developer" tampere
 
 echo "Hi, I'm appending files for 5 seconds..." 
 sleep 5
