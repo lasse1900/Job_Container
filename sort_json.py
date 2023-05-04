@@ -20,5 +20,3 @@ def sort():
 
     with open('sorted.json', 'w', encoding='utf-8') as fp:
         fp.write(json_dump)
-
-sort()
