@@ -43,7 +43,7 @@ def start(offset, filename, keyword, location):
 			return
 
 
-def load_jobs(argv1, argv2):
+def main(argv1, argv2):
     offset = "0" # RapidAPI specific to read 10 jobs on one searchpage
     filename = argv1
     print(f'filename: {filename}')
@@ -59,4 +59,6 @@ def load_jobs(argv1, argv2):
        start(offset.__str__(), filename, keyword, location)
     else:
        start(offset.__str__(), filename, keyword, location='suomi')
-    
+
+if __name__ == '__main__':
+    main(sys.argv[1:].__str__())

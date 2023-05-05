@@ -1,6 +1,7 @@
 import time
 import os
-from api_request import load_jobs
+import pandas
+from api_request import main # running API-request
 from append_json_files import parse_json_files_together
 from sort_json import sort
 from format_json import format_2_docx
@@ -23,24 +24,21 @@ if os.path.exists("sorted.json"):
 if os.path.exists("output.json"):
     os.remove("output.json")
 
-# get the amount of argument lines
-with open(r"search_terms.txt", 'r') as fp:
-    for count, line in enumerate(fp):
-        pass
-print('Total Lines', count + 1)
+# request open jobs with keywords given in search_terms.csv file
+row_count = 0
+keywords = []
+file_params = pandas.read_csv('search_terms.csv')
+for index, row in file_params.iterrows():
+    sana = row['keyword']
+    keywords.append(sana)
+    keyword_index = index
+    print(row['keyword'], row['location'])
+    print(f" {row['keyword']} keyword with index: ",keyword_index)
+    main(f"input_{index}.json", keywords[keyword_index])
+    row_count = index + 1
 
-# request open jobs with keywords given in search_terms.txt file
-# TODO count the number of parameters and act accordingly
-with open("search_terms.txt") as file:
-    lines = [line.rstrip() for line in file]
-    print(lines[0])
-    load_jobs("input_0.json", lines[0])
-    print(lines[1])
-    load_jobs("input_1.json", lines[1])
-    print(lines[2])
-    load_jobs("input_2.json", lines[2])
-    print(lines[3])
-    load_jobs("input_3.json", lines[3])
+print(f"row count: {row_count}")
+print(f"keywords: {keywords}")
 
 time.sleep(5)
 print("Hi, I'm appending files for 5 seconds..." )
