@@ -23,6 +23,8 @@ if os.path.exists("sorted.json"):
     os.remove("sorted.json")
 if os.path.exists("output.json"):
     os.remove("output.json")
+if os.path.exists("output_temp.json"):
+    os.remove("output_temp.json")    
 
 # request open jobs with keywords given in search_terms.csv file
 row_count = 0

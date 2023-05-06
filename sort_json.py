@@ -2,7 +2,7 @@ import json
 from datetime import datetime
 
 def loadData():
-    with open('input_1.json') as user_file:
+    with open('output.json') as user_file:
         file_contents = json.load(user_file)
     return file_contents
 
