@@ -1,6 +1,6 @@
 import time
-import os
 import pandas
+from delete_oldfiles import delete_files
 from api_request import main # running API-request
 from append_json_files import parse_json_files_together
 from sort_json import sort
@@ -8,23 +8,7 @@ from format_json import format_2_docx
 from send_email_to_csv_contacts_once_a_day import send_email
 
 # delete old files
-# TODO make method of these deletetions
-if os.path.exists("input_0.json"):
-    os.remove("input_0.json")
-if os.path.exists("input_1.json"):
-    os.remove("input_1.json")
-if os.path.exists("input_2.json"):
-    os.remove("input_2.json")
-if os.path.exists("input_3.json"):
-    os.remove("input_3.json")
-if os.path.exists("jobs.docx"):
-    os.remove("jobs.docx")
-if os.path.exists("sorted.json"):
-    os.remove("sorted.json")
-if os.path.exists("output.json"):
-    os.remove("output.json")
-if os.path.exists("output_temp.json"):
-    os.remove("output_temp.json")    
+delete_files()
 
 # request open jobs with keywords given in search_terms.csv file
 row_count = 0
