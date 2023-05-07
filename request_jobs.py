@@ -45,7 +45,7 @@ print(f"keywords: {keywords}")
 time.sleep(5)
 print("Hi, I'm appending files for 5 seconds..." )
 # TODO for starters give the amount of params as an argument to parse_json_files_together()
-parse_json_files_together()
+parse_json_files_together(row_count)
 
 time.sleep(5)
 print("Hi, I'm sorting files for 5 seconds...")
