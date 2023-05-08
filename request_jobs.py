@@ -19,8 +19,8 @@ for index, row in file_params.iterrows():
     keywords.append(sana)
     keyword_index = index
     print(row['keyword'], row['location'])
-    print(f" {row['keyword']} keyword with index: ",keyword_index)
-    main(f"input_{index}.json", keywords[keyword_index])
+    print("keyword: ", row['keyword'], " location: ", row['location'])
+    main(f"input_{index}.json", row['keyword'], row['location'])
     row_count = index + 1
 
 print(f"row count: {row_count}")
