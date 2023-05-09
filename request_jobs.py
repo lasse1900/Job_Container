@@ -5,7 +5,7 @@ from api_request import main # running API-request
 from append_json_files import parse_json_files_together
 from sort_json import sort
 from format_json import format_2_docx
-from send_email_to_csv_contacts_once_a_day import send_email
+from send_emails_with_attachments import send_email
 
 # delete old files
 delete_files()
@@ -34,7 +34,7 @@ parse_json_files_together(row_count)
 time.sleep(5)
 print("Hi, I'm sorting files for 5 seconds...")
 # sort json file according to descending date
-sort()
+sort(row_count)
 
 time.sleep(2)
 print("Hi, I'm formating json to docx for 5 seconds...")

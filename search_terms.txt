@@ -1,4 +1,0 @@
-embedded
-product
-hardware
-security

@@ -1,2 +1,3 @@
 X-RapidAPI-Key = "Your RapidAPI-key"
 YAGMAIL_PASS = "your yagmail password"
+ETTEPLAN_PASS = "password for smtprelay"

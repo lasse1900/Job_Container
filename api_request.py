@@ -22,7 +22,6 @@ def start(offset, filename, keyword, location):
 			"keyword": keyword, 
 			"location": location
 		}
-
 		headers = {
 			"content-type": "application/json",
 			"X-RapidAPI-Key": token,
@@ -30,8 +29,6 @@ def start(offset, filename, keyword, location):
 		}
 
 		response = requests.request("GET", url, headers=headers, params=querystring)
-		
-		# print(response.text)
 		time.sleep(6)
 		response = json.loads(response.text)
 		next_page = response[0]['next_page']
@@ -46,19 +43,10 @@ def start(offset, filename, keyword, location):
 			json.dump(job_data, fp, indent=2, ensure_ascii=False, sort_keys=True)
 			return
 
-
-def main(argv1, argv2, argv3):
+def main(filename, keyword, location):
     offset = "0" # RapidAPI specific to read 10 jobs on one searchpage
-    print("argumentit ---> ", argv1, " -- ", argv2, " -- ", argv3)
+    print("argumentit ---> ", filename, " -- ", keyword, " -- ", location)
     num_args = len(inspect.signature(main).parameters)
-    print(f"def main(...) number of args: {num_args}")
-    filename = argv1
-    print(f'filename: {filename}')
-    keyword = argv2
-    print(f'keyword: {keyword}')
-    print(f'{len(sys.argv)} argumet(s) were given')
-    location = argv3
-    print(f"{location}")
     
     if num_args == 3:
        print(f"location: {location} ")
