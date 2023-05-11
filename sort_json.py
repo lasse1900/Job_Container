@@ -1,15 +1,14 @@
 import json
 from datetime import datetime
 
-def loadData(row_count):
-    row_count -= 1
-    print(f"row count {row_count}")
-    with open(f"input_{row_count}.json", encoding="utf-8") as user_file:
+def loadData():
+    with open(f"output.json", encoding="utf-8") as user_file:
         file_contents = json.load(user_file)
     return file_contents
 
-def sort(row_count):
-    info = loadData(row_count)
+# file indexing starting from 0
+def sort():
+    info = loadData()
     temp = sorted(
         info,
         reverse=True,

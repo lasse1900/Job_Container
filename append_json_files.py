@@ -12,7 +12,5 @@ def parse_json_files_together(row_count):
     output_data = list(itertools.chain(*input_data))
     pathlib.Path("output_temp.json").write_text(json.dumps(output_data), encoding="utf-8")
 
-    print(f"------------>>> input_{i}.json")
-
-    with open(f"input_{i}.json", 'w', encoding='utf-8') as f:
+    with open(f"output.json", 'w', encoding='utf-8') as f:
         json.dump(output_data, f, ensure_ascii=False, indent=4)

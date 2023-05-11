@@ -18,8 +18,6 @@ for index, row in file_params.iterrows():
     keywords.append(sana)
 
 subject = "Open Jobs on Indeed - " + today.strftime("%B %d, %Y")
-print(subject)
-print(f"keywords: {keywords}")
 
 # Input to this Pandoc formating is sorted.json file, which is converted through markdown to docx
 def format_2_docx():
