@@ -20,7 +20,7 @@ offset = 0
 file_params = pandas.read_csv('search_terms.csv')
 for index, row in file_params.iterrows():
     keyword = row['keyword']
-    keyword_stripped =keyword.strip()
+    keyword_stripped = keyword.strip()
     keywords.append(keyword_stripped)
     location = row['location']
     location_stripped = location.strip()
