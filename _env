@@ -1,3 +1,3 @@
 X-RapidAPI-Key = "Your RapidAPI-key"
-YAGMAIL_PASS = "your yagmail password"
-ETTEPLAN_PASS = "password for smtprelay"
+YAGMAIL_PASS = "your password" # needed if Yagmail GMAIL/SMTP client is used
+ETTEPLAN_PASS = "password for smtprelay" # not needed if internal mail relay is used
