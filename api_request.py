@@ -10,7 +10,7 @@ url = "https://indeed-jobs-api-finland.p.rapidapi.com/indeed-fi/"
 job_data = []
 
 def start(offset, filename, keyword, location):
-	print(f"@def start-> offset: {offset}, filename: {filename}, keyword: {keyword}, location: {location}")
+	print(f"def start-> offset: {offset}, filename: {filename}, keyword: {keyword}, location: {location}")
 	with open(filename, 'a+', encoding='utf-8') as fp:
 		querystring = {
 			"offset": f"{offset}", 
@@ -29,7 +29,6 @@ def start(offset, filename, keyword, location):
 		next_page = response[0]['next_page']
 
 		if next_page == 'True':
-			print(next_page)
 			job_data.extend(response)
 			offset += (10)
 			start(offset, filename,keyword, location)
@@ -40,13 +39,6 @@ def start(offset, filename, keyword, location):
 			return
 
 def main(offset, filename, keyword, location):
-    # Main function code is here
-    print("Argument 1:", offset)
-    print("Argument 2:", filename)
-    print("Argument 3:", keyword)
-    print("Argument 4:", location)
-    print(f"offset in main: {offset}")
-
     start(offset, filename, keyword, location)
     
 if __name__ == '__main__':	
