@@ -23,7 +23,7 @@ def delete_files():
         os.remove("output.json")
     if os.path.exists("output_temp.json"):
         os.remove("output_temp.json")
+    if os.path.exists("filtered.json"):
+        os.remove("filtered.json")        
     if os.path.exists("formated.md"):
         os.remove("formated.md")
-
-

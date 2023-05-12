@@ -6,6 +6,7 @@ from append_json_files import parse_json_files_together
 from sort_json import sort
 from format_json import format_2_docx
 from send_emails_with_attachments import send_email
+from filter_json import filter
 
 # delete old files
 delete_files()
@@ -32,13 +33,19 @@ for index, row in file_params.iterrows():
 
 time.sleep(5)
 print("Hi, I'm appending files for 5 seconds..." )
-# TODO for starters give the amount of params as an argument to parse_json_files_together()
-parse_json_files_together(2)
+print(f"row_amount in request_jobs: {row_count} ")
+# Give the amount of params as an argument to parse_json_files_together()
+parse_json_files_together(row_count)
 
 time.sleep(5)
 print("Hi, I'm sorting files for 5 seconds...")
 # sort json file according to descending date, file indexing starting from 0
 sort()
+
+time.sleep(5)
+print("Hi, I'm filtering file for 5 seconds...")
+# filter json file dropping out old jobs
+filter()
 
 time.sleep(2)
 print("Hi, I'm formating json to docx for 5 seconds...")

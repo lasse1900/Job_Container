@@ -19,13 +19,13 @@ for index, row in file_params.iterrows():
 
 subject = "Open Jobs on Indeed - " + today.strftime("%B %d, %Y")
 
-# Input to this Pandoc formating is sorted.json file, which is converted through markdown to docx
+# Input to this Pandoc formating is filtered.json file, which is converted through markdown to docx
 def format_2_docx():
-    with open('sorted.json', 'r') as file:
+    with open('filtered.json', 'r') as file:
         data = file.read()
 
     # sparate call to read line count
-    with open("sorted.json", 'r', encoding="utf-8") as fp:
+    with open("filtered.json", 'r', encoding="utf-8") as fp:
         for count, line in enumerate(fp):
             pass
     # print('Total Lines', count + 1)

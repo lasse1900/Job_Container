@@ -23,7 +23,7 @@ def send_email():
         msg.attach(body)
 
         # # Add attachments to be send the list below
-        attachments = ['jobs.docx', 'sorted.json']
+        attachments = ['jobs.docx', 'filtered.json']
 
         for attachment_path in attachments:
             with open(attachment_path, "rb") as file:
