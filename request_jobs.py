@@ -5,6 +5,7 @@ from api_request import main # running API-request
 from append_json_files import parse_json_files_together
 from sort_json import sort
 from format_json import format_2_docx
+from format_json_to_docx import format_json_2_docx
 from send_emails_with_attachments import send_email
 from filter_json import filter
 
@@ -48,10 +49,15 @@ print("Hi, I'm filtering file for 5 seconds...")
 filter()
 
 time.sleep(2)
-print("Hi, I'm formating json to docx for 5 seconds...")
+print("Hi, I'm formating (with Pypandox-library) json to docx for 5 seconds...")
 # formating json file into word document
 format_2_docx()
+
 time.sleep(2)
+print("Hi, I'm formating (with docx library) json to docx for 5 seconds...")
+# formating json file into word document
+format_json_2_docx()
+
 print("Hi, I'm sending email..." )
 # sending jobs.docx according to the contacts.csv mailing list
 send_email()

@@ -19,7 +19,7 @@ def filter():
     start_date2 = start_date.strftime("%d,%m,%y")
     start_date_object = datetime.datetime.strptime(start_date2, "%d,%m,%y").date()    
 
-    with open('sorted.json') as json_file:
+    with open('sorted.json',encoding='utf-8') as json_file:
         data = json.load(json_file)
 
     filtered_data = [obj for obj in data if start_date_object <= datetime.datetime.strptime(obj['date'], '%d-%m-%y').date() <= end_date_object]

@@ -31,7 +31,7 @@ def format_2_docx():
     # print('Total Lines', count + 1)
 
     number_of_jobs = (count - 2)/17
-    print(f'Number of jobs: {int(number_of_jobs)}')
+    print(f'Number of jobs = [filtered.json lines/17]: {int(number_of_jobs)}')
     top = int(number_of_jobs)-1
 
     desired_keys = ["company_name", "date", "job_location", "job_title", "job_url"]
