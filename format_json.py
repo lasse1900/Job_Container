@@ -1,6 +1,7 @@
 import json
 import pypandoc
 import pandas
+import math
 from datetime import datetime as dt
 today = dt.today()
 
@@ -13,9 +14,12 @@ output_file = "jobs.docx"
 # reading search terms from csv file
 file_params = pandas.read_csv('search_terms.csv')
 keywords = []
+locations = []
 for index, row in file_params.iterrows():
     sana = row['keyword']
+    location = row['location']
     keywords.append(sana)
+    locations.append(location)
 
 subject = "Open Jobs on Indeed - " + today.strftime("%B %d, %Y")
 
@@ -31,16 +35,18 @@ def format_2_docx():
     # print('Total Lines', count + 1)
 
     number_of_jobs = (count - 2)/17
-    print(f'Number of jobs = [filtered.json lines/17]: {int(number_of_jobs)}')
-    top = int(number_of_jobs)-1
+    jobs = math.floor(number_of_jobs)
+    # print(f'Number of jobs = [filtered.json lines/17]: {jobs}')
+    top = jobs
 
     desired_keys = ["company_name", "date", "job_location", "job_title", "job_url"]
-    key = "https://fi.indeed.com/"
+    key = "https://fi.indeed.com"
 
     with open("formated.md", "w") as wf:
         def format_one_link(key):
             return f"<{key}>"
         wf.write(f"Open jobs at:  {format_one_link(key)}\n  Date: " + today.strftime("%B %d, %Y"))
+        wf.write(f" at {locations[0]} {jobs} open jobs")        
         wf.write("\n")
         wf.write("\n")
         wf.write(f"with following keywords: {keywords}")

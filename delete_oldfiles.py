@@ -17,6 +17,8 @@ def delete_files():
 
     if os.path.exists("jobs.docx"):
         os.remove("jobs.docx")
+    if os.path.exists("jobs2.docx"):
+        os.remove("jobs2.docx")
     if os.path.exists("sorted.json"):
         os.remove("sorted.json")         
     if os.path.exists("output.json"):
@@ -24,6 +26,8 @@ def delete_files():
     if os.path.exists("output_temp.json"):
         os.remove("output_temp.json")
     if os.path.exists("filtered.json"):
-        os.remove("filtered.json")        
+        os.remove("filtered.json")    
+    if os.path.exists("filtered_with_header.json"):
+        os.remove("filtered_with_header.json")       
     if os.path.exists("formated.md"):
         os.remove("formated.md")
