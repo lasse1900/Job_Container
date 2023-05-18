@@ -2,9 +2,11 @@ import json
 from docx import Document
 import pandas
 import math
+from ftfy import fix_encoding
+import csv
 from datetime import datetime as dt
 today = dt.today()
-from ftfy import fix_encoding
+
 
 # reading search terms from csv file
 file_params = pandas.read_csv('search_terms.csv')
@@ -37,10 +39,24 @@ def format_json_2_docx():
     number_of_jobs = (count - 2)/17
     jobs = math.floor(number_of_jobs)
     # print(f'Number of jobs = [filtered.json lines/17]: {jobs}')
-
+    location_and_job_number = ""
     subject = "Open Jobs at https://fi.indeed.com - " + today.strftime("%B %d, %Y")
     keyword_list = f"with following keywords: {keywords}"
-    location_and_job_number = f"at{locations[0]} {jobs} open jobs"
+
+    # In case locations are missing and default location 'Suomi' is added into list    
+    csv_file = "locations_bup.csv"
+    data_string = ""
+    # Open the CSV file in read mode
+    with open(csv_file, mode='r') as file:
+        reader = csv.reader(file)
+        # Iterate over each row in the CSV file
+        for row in reader:
+            # Join the values of each row into a string
+            row_string = ','.join(row)
+            data_string += row_string
+    # print("Data read from CSV:\n", data_string)
+    print(data_string)
+    location_and_job_number = f"At locations:  {data_string} {jobs} open jobs"
 
     # Load JSON data from the file and add a JSON header
     with open('filtered_with_header.json', 'r') as json_file: 
@@ -53,8 +69,8 @@ def format_json_2_docx():
     for item in json_data:
         # Add the document title
         document.add_heading(subject, level=1)
-        document.add_paragraph(keyword_list)
         document.add_paragraph(location_and_job_number)
+        document.add_paragraph(keyword_list)
 
         # Add sections to the document
         data = item['data']
@@ -71,6 +87,5 @@ def format_json_2_docx():
             document.add_paragraph(job_url)
             document.add_paragraph(date)
             document.add_paragraph(job_location)
-            document.add_paragraph('_'*25)
 
     document.save('jobs2.docx')

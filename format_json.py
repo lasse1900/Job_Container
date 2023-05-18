@@ -23,6 +23,12 @@ for index, row in file_params.iterrows():
 
 subject = "Open Jobs on Indeed - " + today.strftime("%B %d, %Y")
 
+# In case locations are missing and default location 'Suomi' is added into list    
+with open('locations_bup.csv', 'r') as f:
+    for line in f:
+        locations_updated = line.strip()
+print(f"locations_updated: {locations_updated}")
+
 # Input to this Pandoc formating is filtered.json file, which is converted through markdown to docx
 def format_2_docx():
     with open('filtered.json', 'r') as file:
@@ -46,7 +52,9 @@ def format_2_docx():
         def format_one_link(key):
             return f"<{key}>"
         wf.write(f"Open jobs at:  {format_one_link(key)}\n  Date: " + today.strftime("%B %d, %Y"))
-        wf.write(f" at {locations[0]} {jobs} open jobs")        
+        wf.write("\n")
+        wf.write("\n")
+        wf.write(f" At locations {locations_updated} {jobs} open jobs")        
         wf.write("\n")
         wf.write("\n")
         wf.write(f"with following keywords: {keywords}")
