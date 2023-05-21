@@ -3,6 +3,7 @@ import os
 import json
 from dotenv import load_dotenv
 import time
+import sys
 
 load_dotenv()
 token = os.environ.get("X-RapidAPI-Key")
@@ -22,21 +23,27 @@ def start(offset, filename, keyword, location):
 			"X-RapidAPI-Key": token,
 			"X-RapidAPI-Host": "indeed-jobs-api-finland.p.rapidapi.com"
 		}
+		try:
+			response = requests.request("GET", url, headers=headers, params=querystring)
+			time.sleep(6)
+			response = json.loads(response.text)
+			next_page = response[0]['next_page']
 
-		response = requests.request("GET", url, headers=headers, params=querystring)
-		time.sleep(6)
-		response = json.loads(response.text)
-		next_page = response[0]['next_page']
-
-		if next_page == 'True':
-			job_data.extend(response)
-			offset += (10)
-			start(offset, filename,keyword, location)
-		else:
-			job_data.extend(response)
-			print("No more pages")
-			json.dump(job_data, fp, indent=2, ensure_ascii=False, sort_keys=True)
-			return
+			if next_page == 'True':
+				job_data.extend(response)
+				offset += (10)
+				start(offset, filename,keyword, location)
+			else:
+				job_data.extend(response)
+				print("No more pages")
+				json.dump(job_data, fp, indent=2, ensure_ascii=False, sort_keys=True)
+				return
+		except:
+			print(response)
+			print("Error happended while getting the response from API")
+			print("next_page = response[0]['next_page']")
+			print("KeyError: 0 - Please try soon again")
+			sys.exit(1)
 
 def main(offset, filename, keyword, location):
     start(offset, filename, keyword, location)

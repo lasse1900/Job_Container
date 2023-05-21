@@ -5,3 +5,4 @@
 *.md
 *.docx
 /logfiles
+locations_bup.csv
