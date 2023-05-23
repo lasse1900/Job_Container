@@ -1,4 +1,5 @@
 import json
+import csv
 import pypandoc
 import pandas
 import math
@@ -24,10 +25,17 @@ for index, row in file_params.iterrows():
 subject = "Open Jobs on Indeed - " + today.strftime("%B %d, %Y")
 
 # In case locations are missing and default location 'Suomi' is added into list    
-with open('locations_bup.csv', 'r') as f:
-    for line in f:
-        locations_updated = line.strip()
-print(f"locations_updated: {locations_updated}")
+csv_file = "locations_bup.csv"
+locations_updated = ""
+# Open the CSV file in read mode
+with open(csv_file, mode='r') as file:
+    reader = csv.reader(file)
+    # Iterate over each row in the CSV file
+    for row in reader:
+        # Join the values of each row into a string
+        row_string = ','.join(row)
+        locations_updated += row_string
+# print("Pypandoc: ", locations_updated)
 
 # Input to this Pandoc formating is filtered.json file, which is converted through markdown to docx
 def format_2_docx():

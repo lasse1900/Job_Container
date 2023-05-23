@@ -55,8 +55,8 @@ def format_json_2_docx():
             row_string = ','.join(row)
             data_string += row_string
     # print("Data read from CSV:\n", data_string)
-    print(data_string)
-    location_and_job_number = f"At locations:  {data_string} {jobs} open jobs"
+    # print(data_string)
+    # location_and_job_number = f"At locations:  {data_string} {jobs} open jobs"
 
     # Load JSON data from the file and add a JSON header
     with open('filtered_with_header.json', 'r') as json_file: 
