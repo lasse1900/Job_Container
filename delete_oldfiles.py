@@ -31,6 +31,6 @@ def delete_files():
         os.remove("filtered_with_header.json")       
     if os.path.exists("formated.md"):
         os.remove("formated.md")
-    if os.path.exists("locations_bup.cvs"):
-        os.remove("locations_bup.csv")
+    if os.path.exists("temp.csv"):
+        os.remove("temp.csv")
         

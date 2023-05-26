@@ -5,4 +5,5 @@
 *.md
 *.docx
 /logfiles
-locations_bup.csv
+temp.csv
+/__pycache__

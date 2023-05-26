@@ -1,8 +1,8 @@
 import json
-import csv
 import pypandoc
 import pandas
 import math
+import csv
 from datetime import datetime as dt
 today = dt.today()
 
@@ -24,18 +24,17 @@ for index, row in file_params.iterrows():
 
 subject = "Open Jobs on Indeed - " + today.strftime("%B %d, %Y")
 
-# In case locations are missing and default location 'Suomi' is added into list    
-csv_file = "locations_bup.csv"
-locations_updated = ""
 # Open the CSV file in read mode
+csv_file = "temp.csv"
+data_string = ""
 with open(csv_file, mode='r') as file:
     reader = csv.reader(file)
     # Iterate over each row in the CSV file
     for row in reader:
         # Join the values of each row into a string
         row_string = ','.join(row)
-        locations_updated += row_string
-# print("Pypandoc: ", locations_updated)
+        data_string += row_string
+print(f"Pandocx -> Data read from CSV: {data_string}")
 
 # Input to this Pandoc formating is filtered.json file, which is converted through markdown to docx
 def format_2_docx():
@@ -62,7 +61,7 @@ def format_2_docx():
         wf.write(f"Open jobs at:  {format_one_link(key)}\n  Date: " + today.strftime("%B %d, %Y"))
         wf.write("\n")
         wf.write("\n")
-        wf.write(f" At locations {locations_updated} {jobs} open jobs")        
+        wf.write(f" At locations {data_string} {jobs} open jobs")        
         wf.write("\n")
         wf.write("\n")
         wf.write(f"with following keywords: {keywords}")

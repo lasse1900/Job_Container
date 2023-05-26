@@ -49,7 +49,7 @@ for index, row in file_params.iterrows():
     print(locations)
 
 # In case locations are missing and default location 'Suomi' is added into list
-csv_file = "locations_bup.csv"
+csv_file = "temp.csv"
 # Open the CSV file in write mode
 with open(csv_file, mode='w', newline='') as file:
     writer = csv.writer(file)
