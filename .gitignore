@@ -5,5 +5,4 @@
 *.md
 *.docx
 /logfiles
-temp.csv
 /__pycache__
