@@ -81,6 +81,9 @@ print("Hi, I'm formating (with docx library) json to docx for 5 seconds...")
 # formating json file into word document
 format_json_2_docx()
 
-print("Hi, I'm sending email..." )
 # sending jobs.docx according to the contacts.csv mailing list
-send_email()
+try:
+    print("Hi, I'm sending email..." )
+    send_email()
+except:
+    print("Error with email sending, email-server might be down for some reason!")
