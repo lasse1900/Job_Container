@@ -22,3 +22,7 @@
 ### Basic Info 2
 - **Running the application** 
 - At this point the program will be run at command line with command: [python request_jobs.py]
+
+### Basic Info 3
+- **Running the application with Flask** 
+- the application is started with command [python app.py] is open at: http://localhost:5000
