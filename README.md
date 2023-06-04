@@ -26,3 +26,24 @@
 ### Basic Info 3
 - **Running the application with Flask** 
 - the application is started with command [python app.py] is open at: http://localhost:5000
+
+### Basic Info 4
+- **Running the dockerized application** 
+- First build the container and then run it, the application is open at: http://localhost:5000
+
+### First build Docker, Secondly run Docker:
+docker build -t my-flask-app .
+docker run -p 5000:5000 my-flask-app
+
+### Delete both:
+docker rm -vf $(docker ps -a -q)
+docker rmi -f $(docker images -a -q)
+
+(docker system prune -a) if really needed
+
+### To stop Docker container:
+- docker ps
+- docker stop <container_id_or_name>
+
+### To see the app at 5000:
+- http://localhost:5000

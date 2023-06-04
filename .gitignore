@@ -4,6 +4,5 @@
 *.json
 *.md
 *.docx
-*.txt
 /logfiles
 /__pycache__

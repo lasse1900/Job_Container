@@ -2,7 +2,6 @@ import json
 from docx import Document
 import pandas
 import math
-from ftfy import fix_encoding
 import csv
 from datetime import datetime as dt
 today = dt.today()
