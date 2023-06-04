@@ -1,0 +1,19 @@
+button {
+    padding: 10px 20px;
+    background-color: rgb(85, 114, 200);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+body {
+    background-color: rgb(189, 216, 232)
+  }
+
+h1 {
+    color: blue;
+}
+
+p {
+    color: gray;
+}

@@ -24,20 +24,8 @@ for index, row in file_params.iterrows():
 
 subject = "Open Jobs on Indeed - " + today.strftime("%B %d, %Y")
 
-# Open the CSV file in read mode
-csv_file = "temp.csv"
-data_string = ""
-with open(csv_file, mode='r') as file:
-    reader = csv.reader(file)
-    # Iterate over each row in the CSV file
-    for row in reader:
-        # Join the values of each row into a string
-        row_string = ','.join(row)
-        data_string += row_string
-print(f"Pandocx -> Data read from CSV: {data_string}")
-
 # Input to this Pandoc formating is filtered.json file, which is converted through markdown to docx
-def format_2_docx():
+def format_2_docx(final_keywords, final_locations):
     with open('filtered.json', 'r') as file:
         data = file.read()
 
@@ -61,10 +49,10 @@ def format_2_docx():
         wf.write(f"Open jobs at:  {format_one_link(key)}\n  Date: " + today.strftime("%B %d, %Y"))
         wf.write("\n")
         wf.write("\n")
-        wf.write(f" At locations {data_string} {jobs} open jobs")        
+        wf.write(f" At locations {final_locations} {jobs} open jobs")        
         wf.write("\n")
         wf.write("\n")
-        wf.write(f"with following keywords: {keywords}")
+        wf.write(f"with following keywords: {final_keywords}")
         wf.write("\n")
         wf.write("\n")
         def format(key, value):

@@ -18,7 +18,7 @@ for index, row in file_params.iterrows():
     keywords.append(sana)
     locations.append(location)
 
-def format_json_2_docx():
+def format_json_2_docx(final_keywords, final_locations):
     # Open the JSON file for reading
     with open('filtered.json', 'r') as file:
         json_data = json.load(file)
@@ -35,27 +35,14 @@ def format_json_2_docx():
         for count, line in enumerate(fp):
             pass
     # print('Total Lines', count + 1)
-
     number_of_jobs = (count - 2)/17
     jobs = math.floor(number_of_jobs)
     # print(f'Number of jobs = [filtered.json lines/17]: {jobs}')
     location_and_job_number = ""
     subject = "Open Jobs at https://fi.indeed.com - " + today.strftime("%B %d, %Y")
-    keyword_list = f"with following keywords: {keywords}"
+    keyword_list = f"with following keywords: {final_keywords}"
 
-    # In case locations are missing and default location 'Suomi' is added into list    
-    csv_file = "temp.csv"
-    data_string = ""
-    # Open the CSV file in read mode
-    with open(csv_file, mode='r') as file:
-        reader = csv.reader(file)
-        # Iterate over each row in the CSV file
-        for row in reader:
-            # Join the values of each row into a string
-            row_string = ','.join(row)
-            data_string += row_string
-    print(f"Docx -> Data read from CSV: {data_string}")
-    location_and_job_number = f"At locations:  {data_string} {jobs} open jobs"
+    location_and_job_number = f"At locations:  {final_locations} {jobs} open jobs"
 
     # Load JSON data from the file and add a JSON header
     with open('filtered_with_header.json', 'r') as json_file: 

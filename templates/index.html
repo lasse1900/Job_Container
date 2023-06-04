@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Write to CSV</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h2>Please enter Keywords</h2>
+    <form action="/write_csv1" method="POST">
+        <input type="text" id="variable1" name="variable1" placeholder="Variable 1,Variable 2">
+        <label for="variable2">Variable 2:</label>
+        <input type="text" id="variable2" name="variable2" placeholder="Variable 1,Variable 2">
+        <label for="variable3">Variable 3:</label>
+        <input type="text" id="variable3" name="variable3" placeholder="Variable 1,Variable 2">
+        <label for="variable4">Variable 4:</label>
+        <input type="text" id="variable4" name="variable4" placeholder="Variable 1,Variable 2">
+        <button class="button" type="submit">Submit</button>
+    </form>
+    <h2>Please enter emails</h2>        
+    <form action="/write_csv2" method="POST">
+        <input type="text" id="variable1" name="variable1" placeholder="Variable 1,Variable 2">
+        <label for="variable2">Variable 2:</label>
+        <input type="text" id="variable2" name="variable2" placeholder="Variable 1,Variable 2">
+        <label for="variable3">Variable 3:</label>
+        <input type="text" id="variable3" name="variable3" placeholder="Variable 1,Variable 2">
+        <label for="variable4">Variable 4:</label>
+        <input type="text" id="variable4" name="variable4" placeholder="Variable 1,Variable 2">
+        <button type="submit">Submit</button>
+    </form>
+    <form action="/start_program" method="POST">
+        <br>
+        <button class="button" type="submit">Start Python Program (please wait few minutes)</button>
+    </form>    
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
