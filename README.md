@@ -1,12 +1,10 @@
 # Job Seacher Master New
 
-
 ## Getting started
 
 - **Notes for team updating the repository**
 - Please read the GitLab Flow short notes from the Documents directory
 - If your are handling the repository mainly alone, please read *GitLab_readme.md*
-
 
 ### Basic Info 1
 
@@ -47,3 +45,7 @@ docker rmi -f $(docker images -a -q)
 
 ### To see the app at 5000:
 - http://localhost:5000
+
+### Helper scripts
+- in helpers directory you can find scripts to read files from container to local disk
+- they will help you with debugging
